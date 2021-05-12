@@ -591,6 +591,7 @@ border:1px solid green ;
 .ggglesig{
     display: flex;
     justify-content: center;
+    margin: 10px 0;
 }
 #googleSignIn{
     align-items: flex-end;
