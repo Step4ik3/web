@@ -588,4 +588,7 @@ h1{
 #opinion:required{
 border:1px solid green ;
 }
-
+.ggglesig{
+    display: flex;
+    justify-content: center;
+}
