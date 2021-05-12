@@ -111,8 +111,6 @@ function renderUserInfo(googleUser, htmlElmId) {
             <ul>
                 <li> ID: ${profile.getId()}
                 <li>  Full name: ${profile.getName()}
-                <li>  Given name: ${profile.getGivenName()}
-                <li>  Family name: ${profile.getFamilyName()}
                 <li>  Image URL: ${profile.getImageUrl()}
                 <li>  Email: ${profile.getEmail()}
             </ul>
@@ -144,11 +142,11 @@ function userChanged(user){
 
     const userInfoElm = document.getElementById("userStatus");
     const userNameInputElm = document.getElementById("name");
-
-    if(userInfoElm ){// pre/for 82GoogleAccessBetter.html
-        renderUserInfo(user,"userStatus");
-    }else if (userNameInputElm){// pre 82GoogleAccessBetterAddArt.html
+if (userNameInputElm){// pre 82GoogleAccessBetterAddArt.html
             userNameInputElm.value=user.getBasicProfile().getName();
+    }
+    else if(userInfoElm ){// pre/for 82GoogleAccessBetter.html
+        renderUserInfo(user,"userStatus");
     }
 
 }
@@ -167,21 +165,20 @@ function updateSignIn() {
 
     const userInfoElm = document.getElementById("userStatus");
     const userNameInputElm = document.getElementById("name");
-
-    if(userInfoElm){// pre/for 82GoogleAccessBetter.html
-        if (sgnd) {
-            renderUserInfo(auth2.currentUser.get(),"userStatus");
-        }else{
-            renderLogOutInfo("userStatus");
-        }
-    }else if (userNameInputElm){// pre/for 82GoogleAccessBetterAddArt.html
+if (userNameInputElm){// pre/for 82GoogleAccessBetterAddArt.html
         if (sgnd) {
             userNameInputElm.value=auth2.currentUser.get().getBasicProfile().getName();
         }else{
             userNameInputElm.value="";
         }
     }
-
+    else if(userInfoElm){// pre/for 82GoogleAccessBetter.html
+        if (sgnd) {
+            renderUserInfo(auth2.currentUser.get(),"userStatus");
+        }else{
+            renderLogOutInfo("userStatus");
+        }
+    }
 }
 
 function startGSingIn() {
