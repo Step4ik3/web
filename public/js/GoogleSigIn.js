@@ -86,21 +86,16 @@ function onFailure(error) {
 }
 
 function userChanged(user){
-    const userInfoElm = document.getElementById("userStatus");
+    document.getElementById("userName").innerHTML=user.getBasicProfile().getName();
+
+
+   // const userInfoElm = document.getElementById("userStatus");
     const userNameInputElm = document.getElementById("name");
 
-    if(userInfoElm){// pre/for 82GoogleAccessBetter.html
-        if (sgnd) {
-            renderUserInfo(auth2.currentUser.get(),"userStatus");
-        }else{
-            renderLogOutInfo("userStatus");
-        }
-    }else if (userNameInputElm){// pre/for 82GoogleAccessBetterAddArt.html
-        if (sgnd) {
-            userNameInputElm.value=auth2.currentUser.get().getBasicProfile().getName();
-        }else{
-            userNameInputElm.value="";
-        }
+    //if(userInfoElm ){// pre/for 82GoogleAccessBetter.html
+   //     renderUserInfo(user,"userStatus");}else
+     if (userNameInputElm){// pre 82GoogleAccessBetterAddArt.html
+            userNameInputElm.value=user.getBasicProfile().getName();
     }
 
 }
@@ -182,22 +177,22 @@ function userChanged(user){
 //         document.getElementById("SignedIn").classList.add("hiddenElm");
 //     }
 
-    // const userInfoElm = document.getElementById("userStatus");
-    // const userNameInputElm = document.getElementById("name");
+//     const userInfoElm = document.getElementById("userStatus");
+//     const userNameInputElm = document.getElementById("name");
 
-    // if(userInfoElm){// pre/for 82GoogleAccessBetter.html
-    //     if (sgnd) {
-    //         renderUserInfo(auth2.currentUser.get(),"userStatus");
-    //     }else{
-    //         renderLogOutInfo("userStatus");
-    //     }
-    // }else if (userNameInputElm){// pre/for 82GoogleAccessBetterAddArt.html
-    //     if (sgnd) {
-    //         userNameInputElm.value=auth2.currentUser.get().getBasicProfile().getName();
-    //     }else{
-    //         userNameInputElm.value="";
-    //     }
-    // }
+//     if(userInfoElm){// pre/for 82GoogleAccessBetter.html
+//         if (sgnd) {
+//             renderUserInfo(auth2.currentUser.get(),"userStatus");
+//         }else{
+//             renderLogOutInfo("userStatus");
+//         }
+//     }else if (userNameInputElm){// pre/for 82GoogleAccessBetterAddArt.html
+//         if (sgnd) {
+//             userNameInputElm.value=auth2.currentUser.get().getBasicProfile().getName();
+//         }else{
+//             userNameInputElm.value="";
+//         }
+//     }
 
 // }
 
