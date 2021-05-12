@@ -90,7 +90,7 @@ function userChanged(user){
 
 
     const userInfoElm = document.getElementById("userStatus");
-    const userNameInputElm = document.getElementById("name");
+    const userNameInputElm = document.getElementById("author");
 
     if(userInfoElm ){// pre/for 82GoogleAccessBetter.html
         renderUserInfo(user,"userStatus");
