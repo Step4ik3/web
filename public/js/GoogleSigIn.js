@@ -84,16 +84,16 @@ function onSuccess(googleUser) {
 function onFailure(error) {
     console.log(error);
 }
-//const userInfoElm = document.getElementById("userStatus");
+const userInfoElm = document.getElementById("userStatus");
 const userNameInputElm = document.getElementById("name");
 
-// if(userInfoElm){// pre/for 82GoogleAccessBetter.html
-//     if (sgnd) {
-//         renderUserInfo(auth2.currentUser.get(),"userStatus");
-//     }else{
-//         renderLogOutInfo("userStatus");
-//     }
-// }else 
+if(userInfoElm){// pre/for 82GoogleAccessBetter.html
+    if (sgnd) {
+        renderUserInfo(auth2.currentUser.get(),"userStatus");
+    }else{
+        renderLogOutInfo("userStatus");
+    }
+}else 
 if (userNameInputElm){// pre/for 82GoogleAccessBetterAddArt.html
     if (sgnd) {
         userNameInputElm.value=auth2.currentUser.get().getBasicProfile().getName();
