@@ -594,4 +594,5 @@ border:1px solid green ;
 }
 #googleSignIn{
     align-items: flex-end;
+    margin: 10px 0;
 }
