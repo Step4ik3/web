@@ -85,7 +85,7 @@ function onFailure(error) {
     console.log(error);
 }
 //const userInfoElm = document.getElementById("userStatus");
-const userNameInputElm = document.getElementById("name");
+const userNameInputElm = document.getElementById("userName");
 
 // if(userInfoElm){// pre/for 82GoogleAccessBetter.html
 //     if (sgnd) {
