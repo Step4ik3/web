@@ -155,7 +155,7 @@ function userChanged(user){
 
 
     const userInfoElm = document.getElementById("userStatus");
-    const userNameInputElm = document.getElementById("author");
+    const userNameInputElm = document.getElementById("name");
 
     if(userInfoElm ){// pre/for 82GoogleAccessBetter.html
         renderUserInfo(user,"userStatus");
@@ -178,7 +178,7 @@ function updateSignIn() {
     }
 
     const userInfoElm = document.getElementById("userStatus");
-    const userNameInputElm = document.getElementById("author");
+    const userNameInputElm = document.getElementById("name");
 
     if(userInfoElm){// pre/for 82GoogleAccessBetter.html
         if (sgnd) {
