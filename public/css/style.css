@@ -598,3 +598,7 @@ border:1px solid green ;
     align-items: flex-end;
     margin: 10px 0;
 }
+.hiddenElm {display:none;}
+
+
+.showElm {display:block;}
