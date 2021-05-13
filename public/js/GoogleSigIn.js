@@ -42,10 +42,10 @@ function userChanged(user){
 
     const userInfoElm = document.getElementById("userStatus");
     const userNameInputElm = document.getElementById("name");
-if (userNameInputElm){
+if (userNameInputElm){// pre 82GoogleAccessBetterAddArt.html
             userNameInputElm.value=user.getBasicProfile().getName();
     }
-    else if(userInfoElm ){
+    else if(userInfoElm ){// pre/for 82GoogleAccessBetter.html
         renderUserInfo(user,"userStatus");
     }
 
@@ -91,13 +91,13 @@ function startGSingIn() {
             'onsuccess': onSuccess,
             'onfailure': onFailure
         });
-        gapi.auth2.init().then( 
+        gapi.auth2.init().then(
             function (){
                 console.log('init');
                 auth2 = gapi.auth2.getAuthInstance();
                 auth2.currentUser.listen(userChanged);
                 auth2.isSignedIn.listen(updateSignIn);
-                auth2.then(updateSignIn); 
+                auth2.then(updateSignIn);
             });
     });
 
