@@ -44,40 +44,20 @@
                 }
             </script>
     
-             <script id="template-articles" type="text/template">
-                <div id="articles">
-                    <div>
-                        <p>Page {{current}} of {{total}}</p>
-                       
-                    </div>
-                {{#articles}}
-                <article>
-                    <h2>{{title}}</h2>
-                    <p>{{content}}</p>
-                    <p>
-                    by {{author}}
-                    </p>
-                </article>
-                {{/articles}}
-                </div>
-                <div>
-                    {{#prev}}
-                    <a href="#articles/{{prev}}">[Back]</a>
-                    {{/prev}}
-                    {{#next}}
-                    <a href="#articles/{{next}}">[Forward]</a>
-                    {{/next}}
-                </div>
-            </script>
-    
-            <script id="template-articles-error" type="text/template">
-                <article>
-                    <h2>Articles acquisition failed</h2>
-                    <p>
-                        {{errMessage}}
-                    </p>
-                </article>
-            </script>
+    <script id="template-articles" type="text/template">
+      <h2>Articles</h2>
+      {{#articles}}
+      <article class="articles">
+          <h3><a href="{{detailLink}}">{{title}}</a></h3>
+  
+  
+          <h4>
+              by {{author}}
+          </h4>
+      </article>
+      {{/articles}}
+  
+  </script>
     
 
 
