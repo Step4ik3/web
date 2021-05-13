@@ -518,10 +518,10 @@ th{
     align-items: flex-end;
     margin: 10px 0;
 }
-/* .hiddenElm {display:none;}
+.hiddenElm {display:none;}
 
 
-.showElm {display:block;} */
+.showElm {display:block;}
 tr{
     display: table-row;
     padding: 1rem 1rem;
