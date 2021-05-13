@@ -1,104 +1,4 @@
-// let auth2 = {};
 
-// function renderUserInfo(googleUser, htmlElmId) {
-//     const profile = googleUser.getBasicProfile();
-
-//     const htmlStringEn=
-//         `
-//             <p>User logged in.</p>
-//             <ul>
-//                 <li> ID: ${profile.getId()}
-//                 <li>  Full name: ${profile.getName()}
-//                 <li>  Image URL: ${profile.getImageUrl()}
-//                 <li>  Email: ${profile.getEmail()}
-//             </ul>
-//         `;
-  
-//     document.getElementById(htmlElmId).innerHTML=htmlStringEn;//generatr u inform after connect
-// }
-
-
-// function userChanged(user){
-//     document.getElementById("userName").innerHTML=user.getBasicProfile().getName();//podgruzka uzera
-//     const userInfoElm = document.getElementById("userStatus");
-//     if(userInfoElm ){
-//         renderUserInfo(user,"userStatus");
-//     }
-
-// }
-// function signOut() {
-//     if(auth2.signOut){
-//         auth2.signOut();
-//     }
-//     if(auth2.disconnect){
-//         auth2.disconnect();
-//     }
-// }
-
-// function updateSignIn() {
-//     const sgnd = auth2.isSignedIn.get();//if user signulsya 
-//     if (sgnd) {
-//         document.getElementById("SignInButton").classList.add("hiddenElm");
-//         document.getElementById("SignedIn").classList.remove("hiddenElm");
-//         document.getElementById("userName").innerHTML=auth2.currentUser.get().getBasicProfile().getName();
-//     }else{
-//         document.getElementById("SignInButton").classList.remove("hiddenElm");
-//         document.getElementById("SignedIn").classList.add("hiddenElm");
-//     }
-
-//     const userInfoElm = document.getElementById("userStatus");
-
-//     if(userInfoElm){
-//         if (sgnd) {
-//             renderUserInfo(auth2.currentUser.get(),"userStatus");// update User status
-//         }
-//     }
-
-// }
-
-// function startGSingIn() {
-//     gapi.load('auth2', function() {
-//         gapi.signin2.render('SignInButton', {
-//             'width': 240,
-//             'height': 50,
-//             'longtitle': true,
-//             'theme': 'dark',
-//             'onsuccess': onSuccess,
-//             'onfailure': onFailure
-//         });
-//         gapi.auth2.init().then( //vyzov button for connect google
-//             function (){
-//                 console.log('init');
-//                 auth2 = gapi.auth2.getAuthInstance();
-//                 auth2.currentUser.listen(userChanged);
-//                 auth2.isSignedIn.listen(updateSignIn);
-//                 auth2.then(updateSignIn);
-//             });
-//     });
-
-// }
-
-// function onSuccess(googleUser) {
-//     console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-// }
-// function onFailure(error) {
-//     console.log(error);
-// }
-
-// function userChanged(user){
-//     document.getElementById("userName").innerHTML=user.getBasicProfile().getName();
-
-
-//    // const userInfoElm = document.getElementById("userStatus");
-//     const userNameInputElm = document.getElementById("name");
-
-//     //if(userInfoElm ){// pre/for 82GoogleAccessBetter.html
-//    //     renderUserInfo(user,"userStatus");}else
-//      if (userNameInputElm){// pre 82GoogleAccessBetterAddArt.html
-//             userNameInputElm.value=user.getBasicProfile().getName();
-//     }
-
-// }
 
 let auth2 = {};
 
@@ -142,10 +42,10 @@ function userChanged(user){
 
     const userInfoElm = document.getElementById("userStatus");
     const userNameInputElm = document.getElementById("name");
-if (userNameInputElm){// pre 82GoogleAccessBetterAddArt.html
+if (userNameInputElm){
             userNameInputElm.value=user.getBasicProfile().getName();
     }
-    else if(userInfoElm ){// pre/for 82GoogleAccessBetter.html
+    else if(userInfoElm ){
         renderUserInfo(user,"userStatus");
     }
 
@@ -153,26 +53,26 @@ if (userNameInputElm){// pre 82GoogleAccessBetterAddArt.html
 
 
 function updateSignIn() {
-    const sgnd = auth2.isSignedIn.get();
-    if (sgnd) {
-        document.getElementById("SignInButton").classList.add("hiddenElm");
-        document.getElementById("SignedIn").classList.remove("hiddenElm");
-        document.getElementById("userName").innerHTML=auth2.currentUser.get().getBasicProfile().getName();
-    }else{
-        document.getElementById("SignInButton").classList.remove("hiddenElm");
-        document.getElementById("SignedIn").classList.add("hiddenElm");
-    }
+    // const sgnd = auth2.isSignedIn.get();
+    // if (sgnd) {
+    //     document.getElementById("SignInButton").classList.add("hiddenElm");
+    //     document.getElementById("SignedIn").classList.remove("hiddenElm");
+    //     document.getElementById("userName").innerHTML=auth2.currentUser.get().getBasicProfile().getName();
+    // }else{
+    //     document.getElementById("SignInButton").classList.remove("hiddenElm");
+    //     document.getElementById("SignedIn").classList.add("hiddenElm");
+    // }
 
     const userInfoElm = document.getElementById("userStatus");
     const userNameInputElm = document.getElementById("name");
-if (userNameInputElm){// pre/for 82GoogleAccessBetterAddArt.html
+if (userNameInputElm){
         if (sgnd) {
             userNameInputElm.value=auth2.currentUser.get().getBasicProfile().getName();
         }else{
             userNameInputElm.value="";
         }
     }
-    else if(userInfoElm){// pre/for 82GoogleAccessBetter.html
+    else if(userInfoElm){
         if (sgnd) {
             renderUserInfo(auth2.currentUser.get(),"userStatus");
         }else{
@@ -191,13 +91,13 @@ function startGSingIn() {
             'onsuccess': onSuccess,
             'onfailure': onFailure
         });
-        gapi.auth2.init().then( //zavolat po inicializácii OAuth 2.0  (called after OAuth 2.0 initialisation)
+        gapi.auth2.init().then( 
             function (){
                 console.log('init');
                 auth2 = gapi.auth2.getAuthInstance();
                 auth2.currentUser.listen(userChanged);
                 auth2.isSignedIn.listen(updateSignIn);
-                auth2.then(updateSignIn); //tiez po inicializacii (later after initialisation)
+                auth2.then(updateSignIn); 
             });
     });
 
