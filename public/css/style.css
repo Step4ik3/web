@@ -508,6 +508,20 @@ th{
     color: #fff;
     padding: 1rem 1rem;
 }
+.ggglesig{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+#googleSignIn{
+    align-items: flex-end;
+    margin: 10px 0;
+}
+.hiddenElm {display:none;}
+
+
+.showElm {display:block;}
 tr{
     display: table-row;
     padding: 1rem 1rem;
@@ -588,17 +602,3 @@ h1{
 #opinion:required{
 border:1px solid green ;
 }
-.ggglesig{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px 0;
-}
-#googleSignIn{
-    align-items: flex-end;
-    margin: 10px 0;
-}
-.hiddenElm {display:none;}
-
-
-.showElm {display:block;}
