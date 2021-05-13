@@ -53,15 +53,15 @@ if (userNameInputElm){
 
 
 function updateSignIn() {
-    // const sgnd = auth2.isSignedIn.get();
-    // if (sgnd) {
-    //     document.getElementById("SignInButton").classList.add("hiddenElm");
-    //     document.getElementById("SignedIn").classList.remove("hiddenElm");
-    //     document.getElementById("userName").innerHTML=auth2.currentUser.get().getBasicProfile().getName();
-    // }else{
-    //     document.getElementById("SignInButton").classList.remove("hiddenElm");
-    //     document.getElementById("SignedIn").classList.add("hiddenElm");
-    // }
+    const sgnd = auth2.isSignedIn.get();
+    if (sgnd) {
+        document.getElementById("SignInButton").classList.add("hiddenElm");
+        document.getElementById("SignedIn").classList.remove("hiddenElm");
+        document.getElementById("userName").innerHTML=auth2.currentUser.get().getBasicProfile().getName();
+    }else{
+        document.getElementById("SignInButton").classList.remove("hiddenElm");
+        document.getElementById("SignedIn").classList.add("hiddenElm");
+    }
 
     const userInfoElm = document.getElementById("userStatus");
     const userNameInputElm = document.getElementById("name");
