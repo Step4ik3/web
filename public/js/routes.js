@@ -366,10 +366,10 @@ function addComment(artIdFromHash) {
     }).then(response => {
         document.getElementById('comment-section').innerHTML += `
             <p>
-            by ${commentAuthor}
+            Author: ${commentAuthor}
             </p>
 
-            <li>${commentText}</li>
+            <li> Text: ${commentText}</li>
         `;
 
     });
