@@ -128,7 +128,7 @@ export default function createAndProcessArticle() {
 		const newArtData = {
 			title: document.getElementById('title').value.trim(),
 			content: document.getElementById('content').value.trim(),
-			author: document.getElementById('author').value.trim(),
+			author: document.getElementById('name').value.trim(),
 
 			imageLink: document.getElementById('imageLink').value.trim(),
 			tags: document.getElementById('tags').value.trim(),
