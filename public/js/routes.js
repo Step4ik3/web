@@ -307,19 +307,17 @@ function deleteArticle(outputEmlId, artIdFromHash) {
 
 	const outpElm = document.getElementById(outputEmlId);
 
-	//1. Get id from the form
+
 
 	const id2Delete = artIdFromHash;
 
-	//2. Set up the request
 
 	const deleteReqSettings =
-		//an object wih settings of the request
+
 		{
 			method: 'DELETE',
 		};
 
-	//3. Execute the request
 
 	outpElm.innerHTML = `Attempting to delete article with id=${id2Delete}<br />... <br /> <br />`;
 
@@ -342,6 +340,8 @@ function deleteArticle(outputEmlId, artIdFromHash) {
 		});
 		
 }
+
+	// Add comment
 function addComment(artIdFromHash) {
 
 
