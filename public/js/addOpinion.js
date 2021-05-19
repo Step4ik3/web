@@ -55,7 +55,7 @@ const email = elements.email.value.trim();
 			'X-Parse-Application-Id': 'pqmHzGtI1BjP4tDwrSGK6OD7z1ELpHQy2zIBmrn9',
 			'X-Parse-REST-API-Key': 'a8S1vTXhLaPZBCDofY5A4H0860BxDfwPYysXgudc',
 		},
-		body: JSON.stringify(newOpinion),
+		body: JSON.stringify(newOjb),
 	};
 
 	const url = 'https://parseapi.back4app.com/classes/Web';
