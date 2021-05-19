@@ -175,12 +175,27 @@
           {{tags}}
       </p>
 
-      <!-- <h5> Comments </h5>
-      <ul>
+      <h5> Comments </h5>
+      <ul id="comment-section">
           {{#comments}}
-          <li>{{{text}}}</li>
+              <p class="commentin">
+                Author: {{author}}
+          </p>
+
+          <li class="commentin">Text:{{{text}}}</li>
           {{/comments}}
-      </ul> -->
+
+    </ul>
+    <br>
+    <label for="author">Author:</label>
+    <input type="text" id="comment_author"/>
+    <br>
+    <label for="text">Text:</label>
+    <input type="text" id="comment_text"/>
+    <br>
+    <button type="button" id="add_comment">
+      Add comment
+    </button>
 
   </article>
 
@@ -294,7 +309,7 @@ The first character must not be a space."  />
           <textarea name="content" id="content" spellcheck="true" lang="sk" cols="50" rows="20" required title="Obsah článku, povinná položka,  môže byť obyčajný text alebo html (Article content, mandatory item, can be plain text or in HTML)."></textarea>
           <br>
           <label for="tags">Keywords:</label>
-          <input type="text" name="tags" id="tags" size="50" title="Zoznam kľúčových slov oddelených čiarkou (Keyword list, comma separated)." placeholder="Write here!!!" />
+          <input type="text" name="tags" id="tags" size="50"  placeholder="Write here!!!" />
 
           <br>
           <br>

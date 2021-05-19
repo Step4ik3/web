@@ -238,21 +238,46 @@ function fetchAndProcessArticle(
 				responseJSON.backLink = `#articles/${offsetFromHash}/${totalCountFromHash}`; //added
 				responseJSON.editLink = `#artEdit/${responseJSON.id}/${offsetFromHash}/${totalCountFromHash}`;
 				responseJSON.deleteLink = `#artDelete/${responseJSON.id}/${offsetFromHash}/${totalCountFromHash}`;
+				fetch(`${url}/comment`).then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        //if we get server error
+                        return Promise.reject(
+                            new Error(`Server answered with ${response.status}: ${response.statusText}.`)
+                        );
+                    }
 
-				document.getElementById(targetElm).innerHTML = Mustache.render(
-					document.getElementById('template-article').innerHTML,
-					responseJSON
-				); //added
-			}
-		})
-		.catch((error) => {
-			////here we process all the failed promises
-			const errMsgObj = { errMessage: error };
-			document.getElementById(targetElm).innerHTML = Mustache.render(
-				document.getElementById('template-articles-error').innerHTML,
-				errMsgObj
-			);
-		});
+                }).then((commentsJSON) => {
+                    responseJSON.comments = commentsJSON.comments;
+
+                    document.getElementById(targetElm).innerHTML = Mustache.render(
+                        document.getElementById('template-article').innerHTML,
+                        responseJSON
+                    ); //added comment
+
+                    if(auth2.isSignedIn.get()) {
+                        document.getElementById('comment_author').value
+                            = auth2.currentUser.get().getBasicProfile().getName();//if signin to add v comment author user name
+                    }
+
+                    document.getElementById('add_comment').onclick = () => {
+                        addComment(artIdFromHash);
+                    }
+
+                });
+
+
+            }
+        })
+        .catch((error) => {
+            ////here we process all the failed promises
+            const errMsgObj = {errMessage: error};
+            document.getElementById(targetElm).innerHTML = Mustache.render(
+                document.getElementById('template-articles-error').innerHTML,
+                errMsgObj
+            );
+        });
 }
 
 const serverUrlBase = 'https://wt.kpi.fei.tuke.sk/api';
@@ -298,21 +323,54 @@ function deleteArticle(outputEmlId, artIdFromHash) {
 
 	outpElm.innerHTML = `Attempting to delete article with id=${id2Delete}<br />... <br /> <br />`;
 
-	fetch(`${urlBase}/article/${id2Delete}`, deleteReqSettings) //now we need the second parameter, an object wih settings of the request.
+	fetch(`${urlBase}/article/${id2Delete}`, deleteReqSettings) 
 		.then((response) => {
-			//fetch promise fullfilled (operation completed successfully)
+		
 			if (response.ok) {
-				//successful execution includes an error response from the server. So we have to check the return status of the response here.
-				outpElm.innerHTML += `Article successfully deleted.`; //no response this time, so we end here
+			
+				outpElm.innerHTML += `Article successfully deleted.`;
 			} else {
-				//if we get server error
+			
 				return Promise.reject(
-					new Error(`Server answered with ${response.status}: ${response.statusText}.`)
-				); //we return a rejected promise to be catched later
+					new Error(`Server answered with ${response.status}: ${response.statusText}.`)	//if we get server error
+				); 
 			}
 		})
 		.catch((error) => {
-			////here we process all the failed promises
+
 			outpElm.innerHTML += `Attempt failed. Details: <br />  ${error}`;
 		});
+		
+}
+function addComment(artIdFromHash) {
+
+
+
+    const commentAuthor
+        = document.getElementById('comment_author').value.trim();
+    const commentText
+        = document.getElementById('comment_text').value.trim();
+    console.log(commentAuthor, commentText);
+
+    const url = `${urlBase}/article/${artIdFromHash}/comment`;
+
+    fetch(url, {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            'text': commentText,
+            'author': commentAuthor,
+        }),
+    }).then(response => {
+        document.getElementById('comment-section').innerHTML += `
+            <p>
+            by ${commentAuthor}
+            </p>
+
+            <li>${commentText}</li>
+        `;
+
+    });
 }
