@@ -259,17 +259,18 @@ The first character must not be a space."  />
       <p>
           Please, use the form below to create your article.
       </p>
-      <form id="articleForm">
+      <form >
           <label for="name">Author:</label>
-          <input type="text" name="name" id="name" size="50" title="Autor článku, maximálna dĺžka: 100 znakov (article author, max. length 100 characters)." maxlength="100" placeholder="Write here!!!" />
+          <input type="text" name="name" id="name" size="50" maxlength="100" placeholder="Write here!!!" />
+
           <br>
           <label for="title">Title:</label>
-          <input type="text" name="title" id="title" size="50"  maxlength="100" pattern="\S[\S\s]*" required title="Názov článku, povinná položka, maximálna dĺžka: 100 znakov, prvý znak nesmie byť medzera (Article title, mandatory item, max. length: 100 characters, the first character must not be a space)." placeholder="Write here!!!" />
+          <input type="text" name="title" id="title" size="50"  maxlength="100" pattern="\S[\S\s]*" required  placeholder="Write here!!!" />
 
 
           <br>
           <label for="imageLink">Image (url):</label>
-          <input type="url" name="imageLink" id="imageLink" size="50" title="URL obrázka. Maximálna dĺžka: 100 znakov (image URL, max. length 100 characters)." maxlength="100"/>
+          <input type="url" name="imageLink" id="imageLink" size="50" maxlength="100"/>
           <br>
           <label></label><button type="button" id="btShowFileUpload">Upload image</button>
 
