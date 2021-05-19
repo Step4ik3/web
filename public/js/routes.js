@@ -35,7 +35,7 @@ export default [
 		getTemplate: (targetElm) => {
 			document.getElementById(targetElm).innerHTML =
 				document.getElementById('template-addOpinion').innerHTML;
-			document.getElementById('opnFrm').onsubmit = processOpnFrmData;
+			document.getElementById('IdForForm').onsubmit = processOpnFrmData;
 		},
 	},
 
