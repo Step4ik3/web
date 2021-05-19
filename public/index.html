@@ -16,7 +16,7 @@
         <img src="./fig/logo/logo_32x32.jpg" alt="logo" class="logo">
         <nav class="menulist">
             <a class="menulist_item" href="#welcome">Welcome!</a>
-          <a class="menulist_item" href="#articles/1">Articles</a>
+          <a class="menulist_item" href="#articles">Articles</a>
           <a class="menulist_item" href="#opinions">Visitor opinions</a>
           <a class="menulist_item" href="#addOpinion">Add your opinion</a>
         </nav>
@@ -24,19 +24,288 @@
       <div id="home">
         <div class="shortinfo">
           <div>
-            <h1 id="title">Cryptocurrency</h1>
+            <h1 id="title_crp">Cryptocurrency</h1>
           
           </div>
         </div>
       </div>
     </header>
-      <main id ="main-router"></main>
-      <script id="template-welcome" type="text/template">
-    <h1>Hi,my name Artem!</h1>
-    </script>
+    <main id="router-view"></main>
 
+      <script id="template-welcome" type="text/template">
+        <article>
+            <h2>Welcome Cryptocurrency</h2>
+            <h3> Author:Artem Stepura</h3>
+
+        </article>
+      </script>
+
+      <!-- <script id="template-welcome" type="text/template">
+    <h1>Hi,my name Artem!</h1>
+</script> -->
+
+    <!-- Click article and open -->
+    <script id="template-articles" type="text/template">
+			{{#articles}}
+			<article>
+			    <h2><a href="{{detailLink}}">{{title}}</a></h2>
+			    <p>
+			        by {{author}}
+			    </p>
+			</article>
+			{{/articles}}
+
+			<a href="#artInsert" class="linkAsButton" id="about_button">Create new aticle!</a>    
+
+		</script>
     
-            <script type="module">
+
+    <!-- Article error open -->
+    <script id="template-articles-error" type="text/template">
+
+			<article>
+			    <h2>Article(s) acquisition failed</h2>
+			    <p>
+			        {{errMessage}}
+			    </p>
+			</article>
+		</script>
+
+
+    <!-- Opinion  -->
+    <script id="template-opinions" type="text/template">
+      <div  id="opinions">
+          <h2 id="opinions_title">Visitor Opinions</h2>
+          {{#.}}
+              <article>
+                  <h3>{{name}} </h3>
+              <p>{{opinion}}</p>
+              <p>{{email}}</p>
+              <p> {{date}} </p>
+              </article>
+          {{/.}}
+          {{^.}}
+          <section>
+              No opinions
+          </section>
+          {{/.}}
+      </div>
+  </script>
+
+<!-- add opinion -->
+
+  <script id="template-addOpinion" type="text/template">
+    <form id="IdForForm">
+        <div class = "review">
+          <h1 class="title_review">STAY IN TOUCH</h1>
+          <h3 class="title_info">Some info about you and cryptocurrency</h3>
+          <div class="form">
+            <label for="name"></label>
+            <input type="text" class="form_nickname" id="name" name="name" required >
+            <input type="email" class="form_email"  id="email" required placeholder="Your email">
+            <input type="url"  class="form_url" placeholder="Your picture(url)">
+    </div>
+        </div>
+          <div class="radio_favourite">
+            
+              <h4 class="title_info">Are you interested in cryptocurrency</h4>
+              <div class="poll">
+            <input type="checkbox" id="No" ><label for="No">No</label>
+            <input type="checkbox" id="Yes" ><label for="Yes">Yes</label></div>
+          </div>
+          <div class="radio_favourite">
+            <h4 class="title_info">What cryptocurrency did you like the most?</h4>
+            <div class="poll">
+            <input type="radio" id='Bitcoin' value="Bitcoin">
+            <label for="Bitcoin">Bitcoin</label>
+            <input type="radio" id='Ethereum' value="Ethereum">
+            <label for="Ethereum">Ethereum</label>
+            <input type="radio" id='BNB_coin' value="BNB_coin">
+            <label for="BNB_coin">BNB coin</label>
+          </div>
+        <h4 class="title_info">Choose how much you liked the site</h4>
+        <input list="liked" />
+          <datalist id="liked">
+            <option value="Bad">
+            <option value="Good">
+            <option value="Cool">
+            <option value="Very good">
+          </datalist>
+        <div class="radio_favourite">
+          <h4 class="title_info">Tell us your impressions of cryptocurrencies</h4>
+          <div>
+            <textarea  name="story" rows="5" cols="33" id="opinion" required placeholder="Cryptocurrencies are interesting but difficult :)"></textarea>
+          </div>
+        </div>
+        <div class="button_favourite">
+        <div class="button_click">
+          <button type="submit" >Submit</button>
+        </div>
+        <div class="button_click">
+          <button type="Reset">Reset</button>
+        </div>
+      </div>
+      </div>
+    
+    </form>
+</article>
+</script> 
+    
+<!-- Content for article -->
+
+<script id="template-article" type="text/template">
+  <article id ="artId">
+      <h3>{{title}}</h3>
+      <p>
+          by {{author}}
+      </p>
+      {{#imageLink}}
+      <figure>
+          <img src="{{imageLink}}" alt="article figure" />
+      </figure>
+      {{/imageLink}}
+      <div>{{{content}}}</div>
+      <p>
+          Keywords:
+          {{tags}}
+      </p>
+
+      <!-- <h5> Comments </h5>
+      <ul>
+          {{#comments}}
+          <li>{{{text}}}</li>
+          {{/comments}}
+      </ul> -->
+
+  </article>
+
+  <footer>
+    <div class="footer_btn">
+      <a href="{{backLink}}" class="linkAsButton" id="footer_button"><< Back</a>
+      <a href="{{editLink}}" class="linkAsButton" id="footer_button">Edit</a>
+      <a href="{{deleteLink}}" class="linkAsButton" id="footer_button">Delete</a>
+      <!-- <a href="#menuTitle" class="linkAsButton">Up to the menu</a> --></div>
+  </footer>
+</script>
+
+<!-- Article -->
+
+<script id="template-article-form" type="text/template">
+  <article>
+      <h2>{{formTitle}}</h2> <br><br>
+
+      <form id="articleForm">
+          <label for="author">Author:</label>
+          <input type="text" name="author" id="author" value="{{author}}" size="50"
+                 title="Article author, max. length 100 characters."
+                 maxlength="100" placeholder="e.g. Ján Trieska" />
+          <br>
+          <label for="title">Title:</label>
+          <input type="text" name="title" id="title" value="{{title}}" size="50"
+                 maxlength="100" pattern="\S[\S\s]*" placeholder="e.g. My story." required
+                 title="Article title, mandatory item, max. length: 100 characters.
+The first character must not be a space."  />
+          <br>
+          <label for="imageLink">Image (url):</label>
+          <input type="url" name="imageLink" id="imageLink" value="{{imageLink}}" size="50"
+                 title="Image URL, max. length 100 characters." maxlength="100"/>
+          <br>
+          <label></label>
+          <button type="button" id="btShowFileUpload">
+              Upload image
+          </button>
+
+          <fieldset class="added hiddenElm" id="fsetFileUpload">
+              <legend>Image Upload</legend>
+              <input type="file" id="flElm" name="file" accept="image/jpeg, image/png"/>
+              <br />
+              <button type="button" id="btFileUpload">
+                  Send image to server </button>
+              <button type="button" id="btCancelFileUpload">
+                  Cancel uploading </button>
+          </fieldset>
+
+
+          <br>
+          <label for="content">Article content:</label>
+          <textarea
+                  name="content" id="content" spellcheck="true" lang="sk"
+                  cols="50" rows="20" required
+                  title="Article content, mandatory item, can be plain text or in HTML.">
+            {{content}}
+          </textarea>
+          <br>
+          <label for="tags">Keywords:</label>
+          <input  type="text" name="tags" id="tags" value="{{tags}}" size="50"
+                  title="Keyword list, comma separated." placeholder="e.g. village, drama" />
+          <br> <br>
+          <button type="reset"> Reset Form </button>
+          <button type="submit"> {{submitBtTitle}} </button>
+
+      </form>
+  </article>
+
+  <footer>
+      <a href="{{backLink}}" class="linkAsButton" id="footer_button"><< Back</a>
+      <!-- <a href="#menuTitle" class="linkAsButton">Up to the menu</a> -->
+  </footer>
+</script>
+
+
+<!-- Add article -->
+<script id="template-insertArticle" type="text/template">
+  <article  id="artAdd">
+      <h2>New article</h2>
+      <p>
+          Please, use the form below to create your article.
+      </p>
+      <form id="articleForm">
+          <label for="author">Author:</label>
+          <input type="text" name="author" id="author" size="50" title="Autor článku, maximálna dĺžka: 100 znakov (article author, max. length 100 characters)." maxlength="100" placeholder="Write here!!!" />
+          <br>
+          <label for="title">Title:</label>
+          <input type="text" name="title" id="title" size="50"  maxlength="100" pattern="\S[\S\s]*" required title="Názov článku, povinná položka, maximálna dĺžka: 100 znakov, prvý znak nesmie byť medzera (Article title, mandatory item, max. length: 100 characters, the first character must not be a space)." placeholder="Write here!!!" />
+
+
+          <br>
+          <label for="imageLink">Image (url):</label>
+          <input type="url" name="imageLink" id="imageLink" size="50" title="URL obrázka. Maximálna dĺžka: 100 znakov (image URL, max. length 100 characters)." maxlength="100"/>
+          <br>
+          <label></label><button type="button" id="btShowFileUpload">Upload image</button>
+
+              <fieldset class="added hiddenElm" id="fsetFileUpload">
+                  <legend>Image Upload</legend>
+                  <input type="file" id="flElm" name="file" accept="image/jpeg, image/png"/>
+                  <br />
+                  <button type="button" id="btFileUpload">Send image to server</button>
+                  <button type="button" id="btCancelFileUpload">Cancel uploading</button>
+              </fieldset>
+
+
+          <br>
+          <label for="content">Article content:</label>
+          <textarea name="content" id="content" spellcheck="true" lang="sk" cols="50" rows="20" required title="Obsah článku, povinná položka,  môže byť obyčajný text alebo html (Article content, mandatory item, can be plain text or in HTML)."></textarea>
+          <br>
+          <label for="tags">Keywords:</label>
+          <input type="text" name="tags" id="tags" size="50" title="Zoznam kľúčových slov oddelených čiarkou (Keyword list, comma separated)." placeholder="Write here!!!" />
+
+          <br>
+          <br>
+          <button type="reset">
+              Reset
+          </button>
+          <button type="submit">
+              Add article
+          </button>
+
+      </form>
+      <footer  class="menuLink"><a href="#welcome" id="footer_button">Back to the menu</a></footer>
+  </article>
+</script>
+
+
+
+     <!--       <script type="module">
                 // import { moveForward } from './js/getArticles.js';
                 function forward() {
                     alert('Click');
@@ -98,10 +367,10 @@
                     </section>
                     {{/.}}
                 </div>
-            </script>
+            </script> -->
 
     
-            <script id="template-addOpinion" type="text/template">
+            <!-- <script id="template-addOpinion" type="text/template">
                     <form id="IdForForm">
                         <div class = "review">
                           <h1 class="title_review">STAY IN TOUCH</h1>
@@ -156,7 +425,7 @@
                     
                     </form>
                 </article>
-            </script> 
+            </script>  -->
             <!-- <div class = "ggglesig">
             <aside id="googleSignIn">
               <div id="SignInButton"></div>
