@@ -29,10 +29,7 @@
           </div>
         </div>
       </div>
-      <form >
-        <label for="name">Author:</label>
-        <input type="text" name="name" id="name" size="50" maxlength="100" placeholder="Write here!!!" />
-      </form>
+
     </header>
     <main id="router-view"></main>
 
@@ -258,6 +255,10 @@ The first character must not be a space."  />
 
 <!-- Add article -->
 <script id="template-insertArticle" type="text/template">
+  <form >
+    <label for="name">Author:</label>
+    <input type="text" name="name" id="name" size="50" maxlength="100" placeholder="Write here!!!" />
+  </form>
   <article  id="artAdd">
       <h2>New article</h2>
       <p>
