@@ -40,14 +40,31 @@ const email = elements.email.value.trim();
 		date: date,
 	};
 
-	let opinions = [];
+	// let opinions = [];
 
-	if (localStorage.myTreesComments) {
-		opinions = JSON.parse(localStorage.myTreesComments);
-	}
+	// if (localStorage.myTreesComments) {
+	// 	opinions = JSON.parse(localStorage.myTreesComments);
+	// }
 
-	opinions.push(newOjb);
-	localStorage.myTreesComments = JSON.stringify(opinions);
+	// opinions.push(newOjb);
+	// localStorage.myTreesComments = JSON.stringify(opinions);
+	const request = {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			'X-Parse-Application-Id': 'pqmHzGtI1BjP4tDwrSGK6OD7z1ELpHQy2zIBmrn9',
+			'X-Parse-REST-API-Key': 'a8S1vTXhLaPZBCDofY5A4H0860BxDfwPYysXgudc',
+		},
+		body: JSON.stringify(newOpinion),
+	};
+
+	const url = 'https://parseapi.back4app.com/classes/Web';
+
+	fetch(url, request).then((response) => {
+		console.log(response);
+	});
+
+	//5. Go to the opinions
 
 	window.location.hash = '#opinions';
 }

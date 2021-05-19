@@ -74,12 +74,12 @@ const articlesPerPage = 20;
 function createHtml4opinions(targetElm) {
 	// Fetch from DB
 
-	const url = 'https://parseapi.back4app.com/classes/new';
+	const url = 'https://parseapi.back4app.com/classes/Web';
 	const request = {
 		method: 'GET',
 		headers: {
-			'X-Parse-Application-Id': 'ObwJxkDsmZ0fFHj3iXHtJoZCSXLtktob6P3tIIgG',
-			'X-Parse-REST-API-Key': 'ayD1UIGCwcBzRLTNJYx5CtTS4MJ9h0CR49mWY5Vz',
+			'X-Parse-Application-Id': 'pqmHzGtI1BjP4tDwrSGK6OD7z1ELpHQy2zIBmrn9',
+			'X-Parse-REST-API-Key': 'a8S1vTXhLaPZBCDofY5A4H0860BxDfwPYysXgudc',
 		},
 	};
 
